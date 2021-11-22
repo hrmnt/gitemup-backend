@@ -3,9 +3,9 @@ const { after, before } = require("../components/actions/upload-file.hook");
 
 const options = {
   properties: {
-    images: {
-      isVisible: false,
-    },
+    // images: {
+    //   isVisible: false,
+    // },
     uploadImage: {
       components: {
         edit: AdminBro.bundle("../components/imageUpload.jsx"),

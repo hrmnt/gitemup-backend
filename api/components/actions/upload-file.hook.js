@@ -15,6 +15,8 @@ const after = async (response, request, context) => {
         const filePath = path.join("uploads", record.id().toString(), ss.name);
         pathes.push(`/${filePath}`);
 
+        console.log("IMAGES:", pathes);
+
         await fs.promises.mkdir(path.dirname(filePath), { recursive: true });
 
         await fs.promises.rename(ss.path, filePath);
