@@ -21,8 +21,11 @@ const after = async (response, request, context) => {
 
         await fs.promises.rename(ss.path, filePath);
       }
-
-      await record.update({ images: pathes });
+      try {
+        await record.update({ images: pathes });
+      } catch (e) {
+        console.log("ERROR:", e);
+      }
     });
   }
   return response;

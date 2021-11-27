@@ -16,6 +16,7 @@ const CollectionCloth = require("../models/collection");
 const ClothType = require("../models/clothType");
 const Gender = require("../models/gender");
 const Machine = require("../models/machine");
+const Order = require("../models/order");
 
 const contentNavigation = {
   name: "",
@@ -57,6 +58,10 @@ const AdminBroOptions = {
     },
     {
       resource: Machine,
+      options: { navigation: contentNavigation },
+    },
+    {
+      resource: Order,
       options: { navigation: contentNavigation },
     },
   ],
