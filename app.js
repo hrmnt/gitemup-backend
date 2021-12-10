@@ -23,12 +23,14 @@ const run = async () => {
 
   const adminRoutes = require("./api/routes/admin");
   const shopItem = require("./api/routes/shopItem");
+  const order = require("./api/routes/order");
 
   app.use(morgan("dev"));
   app.use(cors());
   app.use("/admin", adminRoutes);
   app.use("/api/uploads", express.static("uploads"));
   app.use("/api/shopItem", shopItem);
+  app.use("/api/order", order);
 
   app.use(bodyParser.urlencoded({ extended: false }));
   app.use(bodyParser.json());
