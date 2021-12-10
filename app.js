@@ -27,13 +27,12 @@ const run = async () => {
 
   app.use(morgan("dev"));
   app.use(cors());
+  app.use(bodyParser.urlencoded({ extended: false }));
+  app.use(bodyParser.json());
   app.use("/admin", adminRoutes);
   app.use("/api/uploads", express.static("uploads"));
   app.use("/api/shopItem", shopItem);
   app.use("/api/order", order);
-
-  app.use(bodyParser.urlencoded({ extended: false }));
-  app.use(bodyParser.json());
 
   app.use((req, res, next) => {
     const error = new Error("Not Found");

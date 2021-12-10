@@ -1,18 +1,29 @@
 const ShopItem = require("../models/shopItem");
 const Delivery = require("../models/delivery");
+const Order = require("../models/order");
 
 exports.create_order = (req, res, next) => {
-  console.log(req.body);
-  ShopItem.find()
-    .populate("size delivery currency collectionCloth clothType gender machine")
-    .exec()
-    .then((docs) => {
-      console.log(docs);
-      res.status(200).json(docs);
+  console.log("OFFER", req.body);
+
+  const order = new Order({
+    name: req.body.name,
+    surname: req.body.surname,
+    phone: req.body.phone,
+    email: req.body.email,
+    product: req.body.product,
+    city: req.body.city,
+    address: req.body.address,
+    delivery: req.body.delivery,
+    items: req.body.items,
+  });
+
+  order
+    .save()
+    .then((result) => {
+      res.status(201).json(result);
     })
     .catch((err) => {
-      console.log("EVENT_GET:", err);
-      res.status(500).json({
+      res.status(400).json({
         error: err,
       });
     });
